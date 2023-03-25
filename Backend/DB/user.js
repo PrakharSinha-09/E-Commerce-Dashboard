@@ -7,6 +7,6 @@ const userSchema=new mongoose.Schema({
  })
 
   //Model Creation
-  const UserModel=mongoose.model('users',userSchema)
+  const UserModel=mongoose.model('users',userSchema)              //first argument being we know is the name of the collection
 
-  module.exports=UserModel                      //exported model only because, schema is inside it itseltf.
+  module.exports=UserModel                                       //exported model only because, schema is inside it itseltf.
