@@ -7,19 +7,21 @@ import Profile from './Components/Profile';
 import Logout from './Components/Logout';
 import UpdateProduct from './Components/UpdateProduct';
 import Footer from './Components/Footer';
+import Signup from './Components/Signup';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
       {/* <AddProduct /> */}
       <Router>
+      <Navbar />
         <Routes>
-          <Route path="/" element={<Product />} />
-          <Route path="/addProduct" element={<AddProduct />} />
-          <Route path="/update" element={<UpdateProduct />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route exact path="/" element={<Product />} />
+          <Route exact path="/addproduct" element={<AddProduct />} />
+          <Route exact path="/update" element={<UpdateProduct />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/logout" element={<Logout />} />
+          <Route exact path="/signup" element={<Signup />} />
         </Routes>
       </Router>
 

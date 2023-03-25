@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@600&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{
+    box-sizing: border-box;
+}
+
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-parent{
+    background:linear-gradient(to right, #1269cc,#ae82ec);
+    margin-top: 50px;
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+
+}
+
+.parent h1 {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form-body{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+span{
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 50px;
+}
+
+input[type=text], input[type=email],input[type=password]{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 50px;
+    font-family: 'Alkatra', cursive;
+}
+
+.btnn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background: #ff0000;
+    background-image: -webkit-linear-gradient(top, #3511eb, #2d2bb8);
+    background-image: -moz-linear-gradient(top, #0e28ec, #2d2bb8);
+    background-image: -ms-linear-gradient(top, #071392, #2d2bb8);
+    background-image: -o-linear-gradient(top, #140376, #2d2bb8);
+    background-image: linear-gradient(to bottom, #6644cc, #2d2bb8);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-size: 18px;
+    padding: 10px 20px 10px 20px;
+    border: solid #6858e3 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: black;
+    font-weight: 600;
+    font-family:'Poppins', sans-serif;
+}
+
+.btn:hover {
+    background: #3a9dcf;
+    background-image: -webkit-linear-gradient(top, #3a8ecf, #7e2be3);
+    background-image: -moz-linear-gradient(top, #3a3acf, #7e2be3);
+    background-image: -ms-linear-gradient(top, #3a50cf, #7e2be3);
+    background-image: -o-linear-gradient(top, #2b31a7, #7e2be3);
+    background-image: linear-gradient(to bottom, #683cee, #7e2be3);
+    text-decoration: none;
+  }
