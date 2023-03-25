@@ -1,7 +1,17 @@
 import React from 'react'
 import '../Styles/navbar.css';
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+
 const Navbar = () => {
+
+  const auth=localStorage.getItem("user")
+  const navigate=useNavigate()                       //remember useNavigate() hook re renders this entire component, if there is any changes in the navigation that's why without refreshing the page itself signup & signout are getting rendered accordingly dependly if user exist or not
+
+  const logout=()=>{
+    localStorage.removeItem("user")
+    navigate('/signup')
+  }
+
   return (
 
     
@@ -15,8 +25,8 @@ const Navbar = () => {
 
         <div className='second'>
             <Link className="nav-link nav-link-ltr" to="/profile"><i className="fa-solid fa-user fa-xl"></i></Link>
-            <Link className="nav-link nav-link-ltr" to="/logout">Sign in</Link>
-            <Link className="nav-link nav-link-ltr" to="/signup">Sign Up</Link>
+            
+            { auth ? <Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out</Link> : <Link className="nav-link nav-link-ltr" to="/signup">Sign Up</Link>}
         </div>
     </nav>
     

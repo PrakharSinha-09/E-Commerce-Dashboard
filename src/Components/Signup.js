@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../Styles/signup.css';
 
@@ -9,6 +9,15 @@ const Signup = () => {
   const[password,setPassword]=useState("")
 
   const navigate=useNavigate()
+
+  //if a user exists (means sign up is done) we will not want to him to access signup right!..for doing such thing useEffect() is used
+  useEffect(()=>{
+    const auth=localStorage.getItem("user") 
+    if(auth)
+    {
+      navigate('/')
+    }
+  })
 
   const collectdata=async()=>{
     let result=await fetch('http://localhost:5000/signup',{

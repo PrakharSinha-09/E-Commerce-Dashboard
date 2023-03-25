@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar';
 import Product from './Components/Product';
 import AddProduct from './Components/AddProduct';
 import Profile from './Components/Profile';
-import Logout from './Components/Logout';
+import Signout from './Components/Signout';
 import UpdateProduct from './Components/UpdateProduct';
 import Footer from './Components/Footer';
 import Signup from './Components/Signup';
@@ -24,9 +24,9 @@ function App() {
             <Route exact path="/addproduct" element={<AddProduct />} />
             <Route exact path="/update" element={<UpdateProduct />} />
             <Route exact path="/profile" element={<Profile />} />
-            <Route exact path="/logout" element={<Logout />} />
+            <Route exact path="/signout" element={<Signout />} />
           </Route>
-          
+
             <Route exact path="/signup" element={<Signup />} />
         </Routes>
       </Router>
