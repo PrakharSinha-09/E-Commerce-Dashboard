@@ -8,6 +8,7 @@ import Signout from './Components/Signout';
 import UpdateProduct from './Components/UpdateProduct';
 import Footer from './Components/Footer';
 import Signup from './Components/Signup';
+import Signin from './Components/Signin';
 import PrivateRoute from './Components/PrivateRoute';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           </Route>
 
             <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/signin" element={<Signin />} />
         </Routes>
       </Router>
 

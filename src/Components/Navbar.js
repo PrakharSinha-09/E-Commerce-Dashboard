@@ -1,6 +1,8 @@
 import React from 'react'
 import '../Styles/navbar.css';
 import { Link,useNavigate } from 'react-router-dom'
+import img1 from '../Assets/img1.png'
+
 
 const Navbar = () => {
 
@@ -17,17 +19,32 @@ const Navbar = () => {
     
     <nav className='navbar'>
 
-        <div className='first'>
-            <Link className="nav-link nav-link-ltr" to="/">Products</Link>
-            <Link className="nav-link nav-link-ltr" to="/addproduct">Add Products</Link>
-            <Link className="nav-link nav-link-ltr" to="/update">Update Product</Link>
-        </div>
+        <img src={img1} alt="" className='logoo' />
+        { auth ?
+          <>
 
-        <div className='second'>
-            <Link className="nav-link nav-link-ltr" to="/profile"><i className="fa-solid fa-user fa-xl"></i></Link>
-            
-            { auth ? <Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out</Link> : <Link className="nav-link nav-link-ltr" to="/signup">Sign Up</Link>}
-        </div>
+          <div className='first'>
+              <Link className="nav-link nav-link-ltr" to="/">Products</Link>
+              <Link className="nav-link nav-link-ltr" to="/addproduct">Add Products</Link>
+              <Link className="nav-link nav-link-ltr" to="/update">Update Product</Link>
+          </div>
+
+          <div className='second'>
+              <Link className="nav-link nav-link-ltr" to="/profile"><i className="fa-solid fa-user fa-xl"></i></Link>
+              <Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out ( {(JSON.parse(auth).name)} )</Link>
+          </div>
+
+          </>
+
+          :
+         
+          <div className='nav-right'>
+          <Link className="nav-link nav-link-ltr" to="/signup">Sign Up</Link>
+          <Link className="nav-link nav-link-ltr" to="/signin">Sign In</Link> 
+          </div>
+
+        }
+          
     </nav>
     
 
