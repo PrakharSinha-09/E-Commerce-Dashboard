@@ -39,7 +39,7 @@ span{
     margin-left: 50px;
 }
 
-input[type=text], input[type=email],input[type=password]{
+.name,.email,.pass{
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -49,6 +49,10 @@ input[type=text], input[type=email],input[type=password]{
     margin-left: 50px;
     font-family: 'Alkatra', cursive;
 }
+
+.no-outline:focus {
+    outline:none;
+  }
 
 .btnn{
     display: flex;

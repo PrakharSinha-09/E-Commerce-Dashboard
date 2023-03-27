@@ -46,9 +46,9 @@ const Signup = () => {
         <i class="fa-sharp fa-solid fa-user fa-2xl enlarge"></i>
         <div className='form-body'>
           {/* <form action="" > */}
-            <span>Name </span> <br /><input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} placeholder='Your Name'/><br />
-            <span>Email</span> <br /><input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Your Email'/><br />
-            <span>Password</span> <br /> <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder='Password'/>
+            <span>Name </span> <br /><input type="text" className='name no-outline' value={name} onChange={(e)=>{setName(e.target.value)}} placeholder='Your Name'/><br />
+            <span>Email</span> <br /><input type="email" className='email no-outline' value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Your Email'/><br />
+            <span>Password</span> <br /> <input type="password" className='pass no-outline' value={password} onChange={(e)=>{setPassword(e.target.value)}} placeholder='Password'/>
             <div className="btnn">
               <button onClick={collectdata} className='btn'>Sign Up</button>
               
