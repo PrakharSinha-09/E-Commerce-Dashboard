@@ -1,3 +1,5 @@
+//here we are going to make the collection for users
+
 const mongoose=require('mongoose')
 
 const userSchema=new mongoose.Schema({                              
