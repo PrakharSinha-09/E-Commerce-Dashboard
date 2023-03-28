@@ -40,10 +40,31 @@ app.post('/signin',async(req,res)=>{
     }
 })
 
+//add product api
 app.post('/addproduct',async(req,res)=>{
     let data=new Product(req.body)
     let result=await data.save()
     res.send(result)
+})
+
+//getting product-list api
+app.get('/products-list',async(req,res)=>{
+    let products=await Product.find()
+    if(products.length>0)
+    {
+        res.send(products)
+    }
+    else{
+        res.send({result:"No Products Found"})
+    }
+})
+
+//delete product api
+app.delete('/product/:_id',async(req,res)=>{
+    let data=await Product.deleteOne(req.params)  
+    console.log(data) 
+    res.send(data)
+
 })
 
 app.listen(5000)

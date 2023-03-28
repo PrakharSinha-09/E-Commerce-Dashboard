@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
-import Product from './Components/Product';
+import Productlist from './Components/Productlist';
 import AddProduct from './Components/AddProduct';
 import Profile from './Components/Profile';
 import Signout from './Components/Signout';
@@ -21,7 +21,7 @@ function App() {
         <Routes>
 
           <Route element={<PrivateRoute />} >
-            <Route exact path="/" element={<Product />} />
+            <Route exact path="/" element={<Productlist />} />
             <Route exact path="/addproduct" element={<AddProduct />} />
             <Route exact path="/update" element={<UpdateProduct />} />
             <Route exact path="/profile" element={<Profile />} />
