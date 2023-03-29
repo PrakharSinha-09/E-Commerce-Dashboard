@@ -43,7 +43,7 @@ const Signup = () => {
       <div className="form-parent">
 
         <h1>Sign Up!</h1><br />
-        <i class="fa-sharp fa-solid fa-user fa-2xl enlarge"></i>
+        <i className="fa-sharp fa-solid fa-user fa-2xl enlarge"></i>
         <div className='form-body'>
           {/* <form action="" > */}
             <span>Name </span> <br /><input type="text" className='name no-outline' value={name} onChange={(e)=>{setName(e.target.value)}} placeholder='Your Name'/><br />

@@ -31,7 +31,7 @@ const Navbar = () => {
 
           <div className='second'>
           <button className='sign-up prof'><Link className="nav-link nav-link-ltr" to="/profile"><i className="fa-solid fa-user fa-xl"></i></Link></button>
-              <button className='sign-up'><Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out ( {(JSON.parse(auth).name)} ) <i class="fa-solid fa-arrow-right-from-bracket"></i></Link></button>
+              <button className='sign-up'><Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out ( {(JSON.parse(auth).name)} ) <i className="fa-solid fa-arrow-right-from-bracket"></i></Link></button>
           </div>
 
           </>

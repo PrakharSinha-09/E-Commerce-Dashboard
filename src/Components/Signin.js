@@ -41,7 +41,7 @@ const Signin = () => {
       <div className="form-parent">
 
         <h1>Sign In!</h1><br />
-        <i class="fa-sharp fa-solid fa-user fa-2xl enlarge"></i>
+        <i className="fa-sharp fa-solid fa-user fa-2xl enlarge"></i>
         <div className='form-body'>
           {/* <form action="" > */}
             <span>Email</span> <br /><input type="email" className='email' value={email} onChange={(e)=>{setEmail(e.target.value)}} placeholder='Your Email'/><br />

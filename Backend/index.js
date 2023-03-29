@@ -67,5 +67,23 @@ app.delete('/product/:_id',async(req,res)=>{
 
 })
 
+//update product api
+app.put('/edit/:_id',async(req,res)=>{
+    let data=await Product.updateOne(
+        req.params,{$set:req.body}
+    )
+    res.send(data)
+})
+
+//getting single product details obviously by their id
+app.get('/getdata/:id',async(req,res)=>{
+    let product=await Product.find({_id:req.params.id})
+    // const obj=await JSON.parse(product)
+    res.send(product)
+    console.log(product[0].name) 
+    // res.send(product.name.toString())
+    // res.send((JSON.parse(product)).name)
+}) 
+
 app.listen(5000)
 
