@@ -4,6 +4,9 @@ require('./DB/config')
 const User=require('./DB/user')    
 const Product=require('./DB/product')
 
+const Jwt=require('jsonwebtoken')
+const secretKey='Prakhar09'
+
 const app=express()
 app.use(express.json())
 app.use(cors())
@@ -19,7 +22,13 @@ app.post('/signup',async(req,res)=>{
         let data=new User(req.body)                                             //we know to insert data(in mongoose), we create instance 
         let result=await data.save()                                            //and then save it to DB 
         delete result.password                                                  //we will never want to send the password onto the server, so before sending it anywhere, we must delete it
-        res.send(result)
+        Jwt.sign({result},secretKey,{expiresIn:"2h"},(err,token)=>{
+            if(err)
+            {
+                res.send({"result":"No Such Account Found!"})
+            }
+            res.send({result,auth:token})
+        })
     }
 })
 
@@ -28,8 +37,15 @@ app.post('/signin',async(req,res)=>{
     {
         let user=await User.findOne(req.body).select("-password")               //we will not be sending password right, so this is the way    
         if(user)
-        {
-            res.send(user)
+        {   
+            Jwt.sign({user},secretKey,{expiresIn:"2h"},(err,token)=>{
+                if(err)
+                {
+                    res.send({"result":"No Such Account Found!"})
+                }
+                res.send({user,auth:token})
+            })
+            // res.send(user)
         }
         else{
             res.send({"result":"No Such Account Found!"})

@@ -9,7 +9,11 @@ const Productlist = () => {
   }, []);
 
   const getProduct = async()=>{
-    let result = await fetch("http://localhost:5000/products-list");
+    let result = await fetch("http://localhost:5000/products-list",{           //to send authorization token to API, we do something like this.
+      headers:{
+        'authorization':JSON.parse(localStorage.getItem('token'))          
+      }
+    });
     result = await result.json();
     setProducts(result);
     console.log(products)

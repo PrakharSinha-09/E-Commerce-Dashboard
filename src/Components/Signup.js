@@ -29,7 +29,8 @@ const Signup = () => {
     })
 
     result=await result.json()
-    localStorage.setItem("user",JSON.stringify(result))              //keeping the credentials in localstorage will help us in effective routing like if user hasn't signeup/signed he should be able to access the other routes
+    localStorage.setItem("user",JSON.stringify(result.result))              //keeping the credentials in localstorage will help us in effective routing like if user hasn't signeup/signed he should be able to access the other routes
+    localStorage.setItem("token",JSON.stringify(result.auth))              
     console.log(result)
     if(result)
     {
