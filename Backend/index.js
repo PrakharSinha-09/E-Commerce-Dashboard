@@ -70,7 +70,7 @@ app.delete('/product/:_id',async(req,res)=>{
 //update product api
 app.put('/edit/:_id',async(req,res)=>{
     let data=await Product.updateOne(
-        req.params,{$set:req.body}
+        req.params,{$set:req.body}                   //first argument means on what basis we want to update the product, we are doing on the basis of id, thus passes req.params
     )
     res.send(data)
 })
@@ -79,11 +79,23 @@ app.put('/edit/:_id',async(req,res)=>{
 app.get('/getdata/:id',async(req,res)=>{
     let product=await Product.find({_id:req.params.id})
     // const obj=await JSON.parse(product)
-    res.send(product)
+    res.send(product) 
     console.log(product[0].name) 
     // res.send(product.name.toString())
     // res.send((JSON.parse(product)).name)
 }) 
+
+//search api
+app.get('/search/:key',async(req,res)=>{
+    let result=await Product.find({ 
+        "$or":[                                          //inside an object, when we want to search on the basis of more than 2 fiel then we use $or
+            {name : {$regex: req.params.key}},           //searching on the basis of name,brand  & category
+            {brand: {$regex: req.params.key}},
+            {category: {$regex: req.params.key}} 
+        ]
+    })
+    res.send(result)
+})
 
 app.listen(5000)
 

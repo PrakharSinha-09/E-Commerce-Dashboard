@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const UpdateProduct = () => {
   const[name,setName]=useState("")
@@ -8,6 +9,8 @@ const UpdateProduct = () => {
   const[brand,setBrand]=useState("")
   const[category,setCategory]=useState("")
   const params=useParams();
+
+  const navigate=useNavigate()
 
   useEffect(()=>{
     getSingle();
@@ -23,8 +26,21 @@ const UpdateProduct = () => {
     
   }
 
+  const userID=JSON.parse(localStorage.getItem('user'))._id
   const updateData=async()=>{
-    console.log(name,price,category,brand)
+    let result=await fetch (`http://localhost:5000/edit/${params.id}`,{
+      method:'put',
+      body:JSON.stringify({name,price,brand,category,userID}),                   //remember one thing that names must be same as you have declared in schema..previously i was writing userId, but in  schema..it is written userID, so remember this thing
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    result=await result.json() 
+    if(result)
+    {
+      alert("Updation Successful!")
+      navigate('/')
+    }
   }
 
 

@@ -91,3 +91,15 @@ span{
     background-image: linear-gradient(to bottom, #683cee, #7e2be3);
     text-decoration: none;
   }
+
+  /*product list search bar styling*/
+  .search{
+    width: 40%;
+    padding: 12px 20px;
+    margin: 28px 0px 8px -103px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 50px;
+    font-family: 'Alkatra', cursive;
+  }
