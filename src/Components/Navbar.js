@@ -7,6 +7,7 @@ import img1 from '../Assets/img1.png'
 const Navbar = () => {
 
   const auth=localStorage.getItem("user")
+  // console.log(auth)
   const navigate=useNavigate()                       //remember useNavigate() hook re renders this entire component, if there is any changes in the navigation that's why without refreshing the page itself signup & signout are getting rendered accordingly dependly if user exist or not
 
   const logout=()=>{
@@ -30,7 +31,7 @@ const Navbar = () => {
           </div>
 
           <div className='second'>
-          <button className='sign-up prof'><Link className="nav-link nav-link-ltr" to="/profile"><i className="fa-solid fa-user fa-xl"></i></Link></button>
+          <button className='sign-up prof'><Link className="nav-link nav-link-ltr" to={`/profile/${JSON.parse(auth)._id}`}><i className="fa-solid fa-user fa-xl"></i></Link></button>
               <button className='sign-up'><Link onClick={logout} className="nav-link nav-link-ltr" to="/signup">Sign Out ( {(JSON.parse(auth).name)} ) <i className="fa-solid fa-arrow-right-from-bracket"></i></Link></button>
           </div>
 

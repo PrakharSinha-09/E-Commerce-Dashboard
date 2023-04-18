@@ -23,7 +23,9 @@ const AddProduct = () => {
       method:'post',
       body:JSON.stringify({name,price,brand,category,userID}),                   //remember one thing that names must be same as you have declared in schema..previously i was writing userId, but in  schema..it is written userID, so remember this thing
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'authorization':`bearer ${JSON.parse(localStorage.getItem('token'))}`          
+        
       }
     })
 

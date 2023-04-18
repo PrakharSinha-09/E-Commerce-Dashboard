@@ -4,6 +4,7 @@ require('./DB/config')
 const User=require('./DB/user')    
 const Product=require('./DB/product')
 
+
 const Jwt=require('jsonwebtoken')
 const secretKey='Prakhar09'
 
@@ -57,14 +58,14 @@ app.post('/signin',async(req,res)=>{
 })
 
 //add product api
-app.post('/addproduct',async(req,res)=>{
+app.post('/addproduct',verifyToken,async(req,res)=>{
     let data=new Product(req.body)
     let result=await data.save()
     res.send(result)
 })
 
 //getting product-list api
-app.get('/products-list',async(req,res)=>{
+app.get('/products-list',verifyToken,async(req,res)=>{
     let products=await Product.find()
     if(products.length>0)
     {
@@ -76,7 +77,7 @@ app.get('/products-list',async(req,res)=>{
 })
 
 //delete product api
-app.delete('/product/:_id',async(req,res)=>{
+app.delete('/product/:_id',verifyToken,async(req,res)=>{
     let data=await Product.deleteOne(req.params)  
     console.log(data) 
     res.send(data)
@@ -84,7 +85,7 @@ app.delete('/product/:_id',async(req,res)=>{
 })
 
 //update product api
-app.put('/edit/:_id',async(req,res)=>{
+app.put('/edit/:_id',verifyToken,async(req,res)=>{
     let data=await Product.updateOne(
         req.params,{$set:req.body}                   //first argument means on what basis we want to update the product, we are doing on the basis of id, thus passes req.params
     )
@@ -92,7 +93,7 @@ app.put('/edit/:_id',async(req,res)=>{
 })
 
 //getting single product details obviously by their id
-app.get('/getdata/:id',async(req,res)=>{
+app.get('/getdata/:id',verifyToken,async(req,res)=>{
     let product=await Product.find({_id:req.params.id})
     // const obj=await JSON.parse(product)
     res.send(product) 
@@ -102,7 +103,7 @@ app.get('/getdata/:id',async(req,res)=>{
 }) 
 
 //search api
-app.get('/search/:key',async(req,res)=>{
+app.get('/search/:key',verifyToken,async(req,res)=>{
     let result=await Product.find({ 
         "$or":[                                          //inside an object, when we want to search on the basis of more than 2 fiel then we use $or
             {name : {$regex: req.params.key}},           //searching on the basis of name,brand  & category
@@ -112,6 +113,33 @@ app.get('/search/:key',async(req,res)=>{
     })
     res.send(result)
 })
+
+//profile api
+app.get('/user-profile/:id',async(req,res)=>{
+    let result=await User.find({_id:req.params.id}).select("-password")  
+    res.send(result)
+})
+
+function verifyToken(req,res,next){
+    let authToken=req.headers['authorization']
+    if(authToken)
+    {
+        authToken=authToken.split(' ')[1]
+        console.log(authToken)
+        Jwt.verify(authToken,secretKey,(err,valid)=>{
+            if(err)
+            {
+                res.status(401).send({"result":"Token is Invalid!"})
+            }
+            else{
+                next()
+            }
+        })
+    }
+    else{
+        res.status(403).send({"result":"Token Not Found"})
+    }
+}
 
 app.listen(5000)
 

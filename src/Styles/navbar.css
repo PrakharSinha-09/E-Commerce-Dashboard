@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     padding: 10px;
-    background-color: #61dafb;
+    background-color: #103e8d;
     justify-content: space-between;
   }
   .nav-link {
@@ -9,7 +9,7 @@
     font-size: 14px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #031D44;
+    color: #ffffff;
     padding: 12px 0px;
     margin: 0px 10px;
     display: inline-block;

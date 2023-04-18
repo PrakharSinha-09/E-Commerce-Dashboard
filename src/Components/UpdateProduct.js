@@ -17,8 +17,15 @@ const UpdateProduct = () => {
   },[])
   
   const getSingle=async ()=>{
-    let data=await fetch(`http://localhost:5000/getdata/${params.id}`)
+    let data=await fetch(`http://localhost:5000/getdata/${params.id}`,{
+      headers:{
+        'Content-Type':'application/json',
+        'authorization':`bearer ${JSON.parse(localStorage.getItem('token'))}`          
+        
+      }
+    })
     data=await data.json()
+    console.log(data.name)
     setName(data[0].name)
     setPrice(data[0].price)
     setBrand(data[0].brand)
@@ -32,7 +39,9 @@ const UpdateProduct = () => {
       method:'put',
       body:JSON.stringify({name,price,brand,category,userID}),                   //remember one thing that names must be same as you have declared in schema..previously i was writing userId, but in  schema..it is written userID, so remember this thing
       headers:{
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'authorization':`bearer ${JSON.parse(localStorage.getItem('token'))}`          
+        
       }
     })
     result=await result.json() 
